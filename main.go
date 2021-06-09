@@ -27,6 +27,11 @@ var oldDir = flag.String("old", "", "Old dir would be cleaned.")
 var newDir = flag.String("new", "", "Directory will store new files")
 var prefix = flag.String("prefix", "plot", "prefix of files will be cleaned")
 var suffix = flag.String("suffix", ".plot", "suffix of files will be cleaned")
+var interval = 0
+
+func init() {
+	flag.IntVar(&interval, "interval", 30, "Checking interval")
+}
 
 func main() {
 	flag.Parse()
@@ -41,6 +46,6 @@ func main() {
 	for true {
 		log.Println("Checking files change...")
 		utils.RemoveOldFiles(*oldDir, *newDir, *prefix, *suffix)
-		time.Sleep(time.Second * 5)
+		time.Sleep(time.Duration(interval) * time.Second)
 	}
 }
