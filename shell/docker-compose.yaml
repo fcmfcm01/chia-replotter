@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  chia-farmer:
+    image: chia-docker:latest
+    container_name: chia-farmer
+    environment:
+      - farmer=true
+      - plots_dir=/chia-plots
+    volumes:
+      - ${chia_dir}:~/.chia
+      - ${plots_dir}:/chia-plots
+    expose:
+      - 8444:8444
+
+  chia-harvester:
+    image: chia-docker:latest
+    container_name: chia-harvester
+    environment:
+      - harvester=true
+      - farmer_address=${farmer_address}
+      - farmer_port=${farmer_port}
+      - ca=/chia-ca
+      - keys=copy
+      - plots_dir=/chia-plots
+    volumes:
+      - ${plots_dir}:/chia-plots
+      - ${ca_dir}:/chia-ca
