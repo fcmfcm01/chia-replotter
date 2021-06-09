@@ -26,3 +26,11 @@ services:
     volumes:
       - ${plots_dir}:/chia-plots
       - ${ca_dir}:/chia-ca
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1400
