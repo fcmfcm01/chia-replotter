@@ -18,8 +18,8 @@ services:
     container_name: chia-harvester
     environment:
       - harvester=true
-      - farmer_address=${farmer_address}
-      - farmer_port=${farmer_port}
+      - farmer_address=192.168.2.227
+      - farmer_port=8444
       - ca=/chia-ca
       - keys=copy
       - plots_dir=/chia-plots
