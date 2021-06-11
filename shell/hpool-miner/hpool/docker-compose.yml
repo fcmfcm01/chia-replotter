@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  hpool-miner:
+    build: iner-v1.4.0-2
+    restart: always
+    volumes:
+      - /mnt/dst:/mnt/dst
+      - /opt/chia/hpool/logs:/opt/log
+      - /opt/chia/hpool/config.yaml:/opt/config.yaml
+    command:
+      - hpool-chia-miner
