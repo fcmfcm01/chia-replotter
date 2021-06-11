@@ -28,6 +28,6 @@ RUN git clone --branch ${BRANCH} https://github.com/Chia-Network/chia-blockchain
 
 ENV PATH=/chia-blockchain/venv/bin/:$PATH
 WORKDIR /chia-blockchain
-ADD ./entrypoint.sh entrypoint.sh
+ADD entrypoint.sh entrypoint.sh
 
 ENTRYPOINT ["bash", "./entrypoint.sh"]
